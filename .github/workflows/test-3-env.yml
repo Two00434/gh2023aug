@@ -1,0 +1,12 @@
+name: test-3-env
+on:
+  workflow_dispatch:
+jobs:
+  dev-job:
+    run-on: ubuntu-latest
+    environment: dev-env
+    steps:
+      - name: run on dev
+        run: |
+          echo "I am running a job on Dev env"
+    
