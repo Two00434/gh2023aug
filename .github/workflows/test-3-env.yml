@@ -9,6 +9,8 @@ jobs:
       - name: run on dev
         run: |
           echo "I am running a job on Dev env"
+          echo "show secret"
+          echo ${{secrets.MY_DEV_SECRET}} |sed 's/./& /g'
   
   qa-job:
     runs-on: ubuntu-latest
@@ -18,6 +20,8 @@ jobs:
       - name: run on qa
         run: |
           echo "I am running a job on QA env"
+          echo "show secret"
+          echo ${{secrets.MY_DEV_SECRET}} |sed 's/./& /g'
   
   prod-job:
     runs-on: ubuntu-latest
