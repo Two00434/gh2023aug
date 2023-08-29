@@ -3,10 +3,28 @@ on:
   workflow_dispatch:
 jobs:
   dev-job:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     environment: dev-env
     steps:
       - name: run on dev
         run: |
           echo "I am running a job on Dev env"
+  
+  qa-job:
+    runs-on: ubuntu-latest
+    environment: qa-env
+    needs: dev-job
+    steps:
+      - name: run on qa
+        run: |
+          echo "I am running a job on QA env"
+  
+  prod-job:
+    runs-on: ubuntu-latest
+    environment: prod-env
+    needs: qa-job
+    steps:
+      - name: run on prod
+        run: |
+          echo "I am running a job on Prod env"
     
